@@ -29,6 +29,11 @@ async function main() {
     ...projectManagerThread,
   });
   console.log(projectManagerResponse.text);
+
+  console.log('Getting web search agent...');
+  const webSearchAgent = mastra.getAgent('webSearch');
+  const webSearchResponse = await webSearchAgent.generate([{ role: "user", content: 'Today news about the stock market' }]);
+  console.log(webSearchResponse.text);
 }
  
 main();
