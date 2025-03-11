@@ -18,6 +18,17 @@ async function main() {
   const sequentialRun = await sequentialWorkflow.createRun();
   const sequentialResponse = await sequentialRun.start({ triggerData: { inputValue: 1 } });
   console.log(sequentialResponse.results);
+
+  console.log('Getting project manager agent...');
+  const projectManagerAgent = mastra.getAgent('projectManager');
+  const projectManagerThread = {
+    resourceId: "user_123",
+    threadId: "thread_456",
+  }
+  const projectManagerResponse = await projectManagerAgent.generate([{ role: "user", content: 'Can you summarize the search feature requirements?' }], {
+    ...projectManagerThread,
+  });
+  console.log(projectManagerResponse.text);
 }
  
 main();
