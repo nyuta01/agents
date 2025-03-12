@@ -4,6 +4,7 @@ import { agent as chefAgent } from './agents/chef';
 import { agent as stockAgent } from './agents/stock';
 import { agent as projectManagerAgent } from './agents/project-manager';
 import { agent as webSearchAgent } from './agents/web-search';
+import { agent as slackAgent } from './agents/slack';
 import { workflow as sequentialWorkflow } from './workflows/sequential';
 
 export const mastra = new Mastra({
@@ -12,6 +13,7 @@ export const mastra = new Mastra({
         stock: stockAgent,
         projectManager: projectManagerAgent,
         webSearch: webSearchAgent,
+        slack: slackAgent,
     },
     workflows: {
         sequential: sequentialWorkflow,

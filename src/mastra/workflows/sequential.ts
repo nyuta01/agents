@@ -25,7 +25,7 @@ const stepTwo = new Step({
 });
 
 const workflow = new Workflow({
-	name: "sequentialWorkflow",
+	name: "sequential",
 	triggerSchema: z.object({
 		inputValue: z.number(),
 	}),

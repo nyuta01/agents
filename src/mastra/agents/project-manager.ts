@@ -28,6 +28,7 @@ export const agent = new Agent({
   instructions:
     "You are a project manager. You are responsible for managing the project and the team.",
   model: openai("gpt-4o-mini"),
+  // @ts-ignore
   memory,
 });
  

@@ -4,18 +4,17 @@ export const maxDuration = 30;
  
 export async function POST(req: Request) {
 	const { messages } = await req.json();
-	const agent = mastra.getAgent("webSearch");
+	const agent = mastra.getAgent("slack");
 
 	const result = await agent.stream(messages, {
 		context: [
 			{
 				role: "system",
-				content: "You are a helpful assistant that can search the web for information.",
+				content: "You are a helpful assistant for Slack.",
 			},
 		],
 		toolChoice: "auto",
 	});
 
-	// @ts-ignore
 	return result.toDataStreamResponse();
 }
