@@ -1,22 +1,22 @@
 
 import { Mastra } from '@mastra/core';
-import { agent as chefAgent } from './agents/chef';
-import { agent as stockAgent } from './agents/stock';
-import { agent as projectManagerAgent } from './agents/project-manager';
-import { agent as webSearchAgent } from './agents/web-search';
-import { agent as slackAgent } from './agents/slack';
-import { workflow as sequentialWorkflow } from './workflows/sequential';
+import { agent as chef } from './agents/chef';
+import { agent as stack } from './agents/stock';
+import { agent as projectManager } from './agents/project-manager';
+import { agent as webSearch } from './agents/web-search';
+import { agent as slackBot } from './agents/slack-bot';
+import { workflow as sequential } from './workflows/sequential';
 
 export const mastra = new Mastra({
     agents: {
-        chef: chefAgent,
-        stock: stockAgent,
-        projectManager: projectManagerAgent,
-        webSearch: webSearchAgent,
-        slack: slackAgent,
+        chef,
+        stack,
+        projectManager,
+        webSearch,
+        slackBot,
     },
     workflows: {
-        sequential: sequentialWorkflow,
+        sequential,
     },
 });
         
