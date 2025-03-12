@@ -31,6 +31,9 @@ const workflow = new Workflow({
 	}),
 });
 
-workflow.step(stepOne).then(stepTwo).commit();
+workflow
+	.step(stepOne)
+	.then(stepTwo)
+	.commit();
 
 export { workflow };

@@ -31,6 +31,11 @@ type ToolArgs =
       displayName: "Perplexity AI Search";
       args: z.infer<typeof PerplexityAiSearchInputSchema>;
     }
+    | {
+        toolName: "SLACK_SENDS_A_MESSAGE_TO_A_SLACK_CHANNEL";
+        displayName: "Slack Post Message";
+        args: unknown;
+      };
 
 
 type ToolContainerProps = {
@@ -84,11 +89,29 @@ const PerplexityAiSearchToolUI = makeAssistantToolUI<
   },
 });
 
+const SlackPostMessageToolUI = makeAssistantToolUI<
+  unknown,
+  unknown
+>({
+  toolName: "SLACK_SENDS_A_MESSAGE_TO_A_SLACK_CHANNEL",
+  render: ({ args, status, toolName }) => {
+    return (
+      <ToolContainer
+        displayName="Slack Post Message"
+        toolName={toolName as "SLACK_SENDS_A_MESSAGE_TO_A_SLACK_CHANNEL"}
+        status={status.type}
+        args={args}
+      />
+    );
+  },
+});
+
 
 const ToolUIWrapper: FC = () => {
   return (
     <>
       <PerplexityAiSearchToolUI />
+      <SlackPostMessageToolUI />
     </>
   );
 };

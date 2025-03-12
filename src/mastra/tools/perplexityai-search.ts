@@ -1,7 +1,6 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import { OpenAIToolSet } from "composio-core";
-import { generateText } from "ai";
 import { OpenAI } from "openai";
 
 export const inputSchema = z.object({

@@ -4,7 +4,7 @@ export const maxDuration = 30;
  
 export async function POST(req: Request) {
 	const { messages } = await req.json();
-	const agent = mastra.getAgent("slackBot");
+	const agent = mastra.getAgent("webSearch");
 
 	const result = await agent.stream(messages, {
 		context: [
