@@ -1,23 +1,24 @@
 "use client"
 
-import { ThreadList } from "@/components/assistant-ui/thread-list";
-import { Thread } from "@/components/assistant-ui/thread";
-import ToolUIWrapper from "@/components/assistant-ui/tool-ui";
-import { AssistantRuntimeProvider } from "@assistant-ui/react";
-import { useChatRuntime } from "@assistant-ui/react-ai-sdk";
+import { useEffect, useState } from "react";
+import { getAgents } from "./actions";
+import { AgentList } from "@/features/home/components/list";
+import { PageHeader } from "@/features/home/components/header";
+import type { AgentSchema } from "@/schema/agent";
+import type { z } from "zod";
 
 export default function Page() {
-  const runtime = useChatRuntime({
-    api: "/api/chat",
-  });
- 
+
+  const [agents, setAgents] = useState<z.infer<typeof AgentSchema>[]>([]);
+
+  useEffect(() => {
+    getAgents().then(setAgents);
+  }, []);
+
   return (
-    <AssistantRuntimeProvider runtime={runtime}>
-      <div className="grid h-dvh grid-cols-[200px_1fr] gap-x-2 px-4 py-4">
-        <ThreadList />
-        <Thread />
-        <ToolUIWrapper />
-      </div>
-    </AssistantRuntimeProvider>
-  );
+    <div className="container mx-auto px-4 py-8">
+      <PageHeader title="Agents" description="Agents are the core of our platform. They are the ones that will help you get the most out of your data." />
+      <AgentList agents={agents} />
+    </div>
+  )
 }

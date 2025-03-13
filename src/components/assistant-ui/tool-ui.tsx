@@ -117,7 +117,4 @@ const ToolUIWrapper: FC = () => {
 };
 
 
-export const ToolsByNameComponents = {
-};
-
 export default ToolUIWrapper;
